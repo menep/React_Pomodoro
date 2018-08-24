@@ -1,0 +1,11 @@
+.container {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+}
+
+.heading {
+  font-weight: 300;
+  font-size: 4rem;
+  letter-spacing: 2.3rem;
+  padding: 3rem;
+}

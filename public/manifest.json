@@ -1,0 +1,6 @@
+{
+  "short_name": "Pomodoro React",
+  "name": "Pomodoro React app by Menep",
+  "start_url": "./index.html",
+  "display": "standalone"
+}

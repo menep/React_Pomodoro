@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.input {
+  background-color: #fff;
+  border: none;
+  height: 5rem;
+  width: 10rem;
+}
