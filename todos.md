@@ -1,7 +1,6 @@
 # Primary
 
-- Create state to store whether timer is working or not
-- Link control buttons to state to control app
+- Complete commening code
 
 
 ## Secondary
@@ -12,4 +11,4 @@
 
 # Issues:
 
-- Main.js: input limits -> what to do in case user provides a value beyond the limit (60 min/sec, 10 cycles)
+- Main.js: input limits -> create error message for exceeding values

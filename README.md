@@ -19,7 +19,12 @@ https://github.com/menep/React_MIX
 
 ## Practiced features:
 
-
+- JSX
+- Functional and Class components
+- Passing props
+- Component styling
+- Modifying state
+- Handling events
 
 ## How to install
 npm install
