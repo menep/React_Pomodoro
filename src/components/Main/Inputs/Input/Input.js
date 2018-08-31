@@ -10,12 +10,12 @@ const input = props => {
         type="number"
         id={props.id}
         name={props.id}
-        placeholder={props.val}
+        placeholder={props.placeholder}
         min={props.min}
         max={props.max}
         required
         className={css.input}
-        onChange={props.changed}
+        onChange={props.onChange}
       />
     </div>
   );

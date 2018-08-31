@@ -4,6 +4,12 @@ import Inputs from "./Inputs/Inputs";
 import Display from "./Display/Display";
 import Controls from "./Controls/Controls";
 
+const activities = {
+  work: "work",
+  break: "break",
+  cycles: "cycles"
+};
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -31,11 +37,14 @@ class Main extends React.Component {
   inputChangeHandler = e => {
     const name = e.target.name;
     const value = Number(e.target.value);
+    // TODO: issue when input has 3 digits
     if (
       // max values for each input, exits function if exceeded
-      (name === "work" && value > 60) ||
-      (name === "break" && value > 15) ||
-      (name === "cycles" && value > 10)
+      (name === activities.work && value > 60) ||
+      (name === activities.break && value > 15) ||
+      (name === activities.cycles && value > 10) || 
+      value < 0 ||
+      !Number.isInteger(value)
     )
       return;
 
@@ -81,13 +90,13 @@ class Main extends React.Component {
           // are there no seconds left as well?
           if (seconds === 0) {
             // if positive, we need to switch activity
-            if (prevCounter.activity === "work") {
+            if (prevCounter.activity === activities.work) {
               // if work period is over, switch to break and reset counter
               return {
                 ...prevCounter,
                 minutes: input.break - 1,
                 seconds: 59,
-                activity: "break"
+                activity: activities.break
               };
             } else {
               // if break period is over, check if there are cycles left
@@ -97,7 +106,7 @@ class Main extends React.Component {
                   ...prevCounter,
                   minutes: input.work - 1,
                   seconds: 59,
-                  activity: "work",
+                  activity: activities.work,
                   cycles: prevCounter.cycles - 1
                 };
               } else {
@@ -137,7 +146,7 @@ class Main extends React.Component {
       // if counter had not been initiated, set minutes to input, activity to work, cycles to the input cycles minus one
       min = stateInput.work;
       sec = 0;
-      stateCounter.activity = "work";
+      stateCounter.activity = activities.work;
       stateCounter.cycles = stateInput.cycles - 1;
     } else {
       // if it had been paused, just set minutes and seconds to the previous values, so the clock can continue and don't modify any other value
@@ -186,14 +195,15 @@ class Main extends React.Component {
   };
 
   render() {
+    const { counter } = this.state;
     return (
       <main className={css.container}>
-        <Inputs changed={this.inputChangeHandler} />
+        <Inputs onChange={this.inputChangeHandler} />
         <Display
-          minutes={this.state.counter.minutes}
-          seconds={this.state.counter.seconds}
-          cycles={this.state.counter.cycles}
-          activity={this.state.counter.activity}
+          minutes={counter.minutes}
+          seconds={counter.seconds}
+          cycles={counter.cycles}
+          activity={counter.activity}
         />
         <Controls
           start={this.onStartHandler}

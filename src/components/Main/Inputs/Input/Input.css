@@ -22,3 +22,7 @@
   display: inline-block;
   box-sizing: border-box;
 }
+
+.input::placeholder {
+  opacity: 0.2;
+}

@@ -5,9 +5,7 @@ import Button from "./Button/Button";
 const controls = props => {
   return (
     <div className={css.container}>
-      <Button type="start" click={props.start} />
-      <Button type="stop" click={props.stop}/>
-      <Button type="reset" click={props.reset}/>
+      {["start", "stop", "reset"].map(el => <Button key={el} type={el} onClick={props[el]} />)}
     </div>
   );
 };

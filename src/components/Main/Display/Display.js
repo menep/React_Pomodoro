@@ -9,11 +9,8 @@ const display = props => {
     seconds = `0${props.seconds}`;
   } else seconds = props.seconds;
 
-  let minutes;
-  if (props.minutes < 10) {
-    minutes = `0${props.minutes}`;
-  } else minutes = props.minutes;
-  
+  const minutes = props.minutes < 10 ? `0${props.minutes}` : props.minutes;
+
   return (
     <div className={css.container}>
       <p className={css.activity}>{props.activity}</p>
